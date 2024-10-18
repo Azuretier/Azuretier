@@ -1,5 +1,5 @@
 ## 使用言語
-<img src="https://img.shields.io/badge/-react-20232a.svg?logo=react&style=for-the-badge">
+<img src="https://img.shields.io/badge/-react-20232a.svg?logo=react&style=for-the-badge"> 20%
 
 ## web
 <a href="https://azuret.net"><img src="https://azuret.net/favicon.ico" alt="website's icon" width="200" height="200"></a>
