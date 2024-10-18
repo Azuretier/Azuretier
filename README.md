@@ -14,6 +14,10 @@
 | <img src="https://img.shields.io/badge/-Python-ffd343.svg?logo=Python&style=for-the-badge"> | プレイ時間が最も長い言語！🥇 |
 
 
+
+
+
+
 ```
 npm install 
 ```
