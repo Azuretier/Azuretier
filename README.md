@@ -5,10 +5,12 @@
 <h1>
   Hi there
 </h1>
+
 ```
 This is coded by html 
 ```
-Code<sub>Hello</sub>  
+
+Code<sub>Hello</sub><br>
 Tailwind<sup>My Works</sup>
 
 Sample code:
