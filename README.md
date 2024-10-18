@@ -9,7 +9,7 @@ Unset
 ## web
 <a href="https://azuret.net"><img src="https://azuret.net/favicon.ico"></a>
 
-> This in link to [https://azuret.net](https://azuret.net)
+> This in link to https://azuret.net
 
 <h1>
   Hi there
