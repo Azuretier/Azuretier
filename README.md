@@ -1,7 +1,7 @@
 ## Web
 <a href="https://azuret.net"><img src="https://azuret.net/favicon.ico" alt="website's icon" width="200" height="200"></a>
 
-> This in link to https://azuret.net
+> This is the link to https://azuret.net
 
 ## Me
 | Tech | For me |
