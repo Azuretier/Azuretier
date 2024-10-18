@@ -28,7 +28,7 @@ Tailwind<sup>My Works</sup>
 
 | 見出し1 | 見出し2 |
 |--------|--------|
-| 内容1  | 内容2  |
+| 内容1  | <img src="https://img.shields.io/badge/-react-20232a.svg?logo=react&style=for-the-badge">  |
 | 内容3  | 内容4  |
 
 - 項目1
