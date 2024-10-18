@@ -6,7 +6,8 @@ Unset
 ## Shield.io
 <img src="https://img.shields.io/badge/aiueo-konyuuta-blue">
 
-## Hi there 👋
+## web
+<a href="https://azuret.net"><img src="https://azuret.net/favicon.ico"></a>
 
 > This is a quote.
 
