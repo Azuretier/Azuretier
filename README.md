@@ -16,6 +16,16 @@
 | <img src="https://img.shields.io/badge/-Python-ffd343.svg?logo=Python&style=for-the-badge"> | プレイ時間が最も長い言語！🥇 |
 </details>
 
+<details>
+  <summary>クリックして展開</summary>
+
+  | 見出し1 | 見出し2 |
+  |---------|---------|
+  | 内容1   | 内容2   |
+  | 内容3   | 内容4   |
+
+</details>
+
 Code<sub>Hello</sub>
 
 Tailwind<sup>My Works</sup>
