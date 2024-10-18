@@ -1,5 +1,5 @@
 ## Web
-<a href="https://azuret.net"><img src="https://azuret.net/favicon.ico" alt="website's icon" width="200" height="200"></a>
+<a href="https://azuret.net"><img src="https://azuret.net/favicon.ico" alt="website's icon" width=200 height=200></a>
 
 > This is the link to https://azuret.net
 
