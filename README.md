@@ -8,7 +8,7 @@
 ```
 This is coded by html 
 ```
-Code<sub>Hello</sub><br>
+Code<sub>Hello</sub>  
 Tailwind<sup>My Works</sup>
 
 Sample code:
