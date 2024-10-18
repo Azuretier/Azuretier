@@ -5,7 +5,8 @@
 
 ## Me
 <details>
-  <summary>Teches for me</summary>
+  <summary>Table of teches for me</summary>
+
   
   | Tech | For me |
   |--------|--------|
