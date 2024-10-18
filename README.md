@@ -4,10 +4,6 @@
 > This in link to https://azuret.net
 
 ## Me
-<details>
-  <summary>Table of teches for me</summary>
-
-  
   | Tech | For me |
   |--------|--------|
   | <img src="https://img.shields.io/badge/-Unity-000000.svg?logo=unity&style=for-the-badge"> | #C言語など分からない |
@@ -16,7 +12,6 @@
   | <img src="https://img.shields.io/badge/-Next.js-000000.svg?logo=next.js&style=for-the-badge"> | 理解が難しい<sub>とても</sub> |
   | <img src="https://img.shields.io/badge/-Javascript-000000.svg?logo=javascript&style=for-the-badge"> | 少しだけ使える |
   | <img src="https://img.shields.io/badge/-Python-ffd343.svg?logo=Python&style=for-the-badge"> | プレイ時間が最も長い言語！🥇 |
-</details>
 
 Code<sub>Hello</sub>
 
