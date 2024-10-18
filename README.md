@@ -11,14 +11,6 @@ Unset
 
 > This in link to https://azuret.net
 
-<h1>
-  Hi there
-</h1>
-
-```
-This is coded by html 
-```
-
 # Hi there
 
 ### Hi there
