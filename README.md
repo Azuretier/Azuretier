@@ -30,5 +30,3 @@ npm install TailwindCSS
 |--------|--------|
 | 内容1  | 内容2  |
 | 内容3  | 内容4  |
-
-Link to the sample section: [Link Text](#Hi-there).
