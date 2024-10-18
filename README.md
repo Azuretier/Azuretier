@@ -2,7 +2,7 @@
 <img src="https://img.shields.io/badge/-react-20232a.svg?logo=react&style=for-the-badge">
 
 ## web
-<a href="https://azuret.net"><img src="https://azuret.net/favicon.ico" alt="website's icon" width="400" height="400"></a>
+<a href="https://azuret.net"><img src="https://azuret.net/favicon.ico" alt="website's icon" width="200" height="200"></a>
 
 > This in link to https://azuret.net
 
