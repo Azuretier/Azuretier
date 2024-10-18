@@ -17,3 +17,5 @@ npm install TailwindCSS
 <h1>
 <a href="https://docs.github.com/ja/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">Github Page</a>
 </h1>
+
+My favorite color is `#f39800`
