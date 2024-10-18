@@ -9,7 +9,7 @@ Unset
 ## web
 <a href="https://azuret.net">
 <img src="https://azuret.net/favicon.ico">
-> azuret.net
+<p>> azuret.net</p>
 </a>
 
 > This is a quote.
