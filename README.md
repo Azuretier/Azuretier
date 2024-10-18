@@ -17,4 +17,4 @@ npm install TailwindCSS
 - [ ] 未完了項目
 - [x] 完了項目
 
-<p style="color:red;">これは青色のテキストです。</p>
+<p style="color:blue;">これは青色のテキストです。</p>
