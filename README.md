@@ -21,3 +21,10 @@ npm install TailwindCSS
   <summary>クリックして展開</summary>
   詳細な説明をここに記述します。
 </details>
+
+Inline math: $E = mc^2$
+
+Block math:
+$$
+E = mc^2
+$$
