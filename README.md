@@ -3,7 +3,7 @@
 
 > This is the link to https://azuret.net
 
-## Me
+## Profile
 | Tech | For me |
 |--------|--------|
 | <img src="https://img.shields.io/badge/-Unity-000000.svg?logo=unity&style=for-the-badge"> | #C言語など分からない |
