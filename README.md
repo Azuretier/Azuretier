@@ -1,12 +1,6 @@
-## 🌱 About Me / 自己紹介
-
-**EN**
-I enjoy building meaningful projects at my own pace.
-I care about community, creativity, and growing together.
-
-**JP**
-ゆっくりでも、意味のあるものを作るのが好きです。
-人とのつながりや、共に成長することを大切にしています。
+```python
+Digital Architect & Developer
+```
 
 ---
 
