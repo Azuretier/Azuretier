@@ -14,6 +14,16 @@ Web開発を中心に、日々学んでいます。
 
 ---
 
+## 📚 Resources / リソース
+
+**EN**
+[Performance Optimization Guide](./PERFORMANCE_GUIDE.md) - Best practices for writing efficient code
+
+**JP**
+[パフォーマンス最適化ガイド](./PERFORMANCE_GUIDE.md) - 効率的なコードを書くためのベストプラクティス
+
+---
+
 ## ✨ Mindset / 大切にしていること
 
 **EN**
