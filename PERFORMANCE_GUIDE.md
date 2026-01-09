@@ -2,8 +2,6 @@
 
 A comprehensive guide to identifying and improving slow or inefficient code.
 
----
-
 ## 📊 Table of Contents
 
 1. [Identifying Performance Issues](#identifying-performance-issues)
@@ -133,26 +131,23 @@ async function processData(data) {
   return await processInWorker(data);
 }
 
-// Or break into chunks
-function processDataInChunks(data) {
-  return new Promise((resolve) => {
-    const chunks = splitIntoChunks(data);
-    let results = [];
-    
-    function processNext(index) {
-      if (index >= chunks.length) {
-        resolve(results);
-        return;
-      }
-      
-      setTimeout(() => {
-        results.push(processChunk(chunks[index]));
-        processNext(index + 1);
-      }, 0);
+// Or break into chunks using scheduler API for better performance
+async function processDataInChunks(data) {
+  const chunks = splitIntoChunks(data);
+  const results = [];
+  
+  for (const chunk of chunks) {
+    results.push(processChunk(chunk));
+    // Yield to browser for better responsiveness
+    if ('scheduler' in globalThis && 'yield' in globalThis.scheduler) {
+      await scheduler.yield();
+    } else {
+      // Fallback for older browsers
+      await new Promise(resolve => setTimeout(resolve, 0));
     }
-    
-    processNext(0);
-  });
+  }
+  
+  return results;
 }
 ```
 
@@ -203,7 +198,10 @@ class Component {
 const memoize = (fn) => {
   const cache = new Map();
   return (...args) => {
-    const key = JSON.stringify(args);
+    // For simple args, or use a library like fast-json-stable-stringify for complex objects
+    const key = args.length === 1 && typeof args[0] !== 'object' 
+      ? args[0] 
+      : JSON.stringify(args);
     if (cache.has(key)) {
       return cache.get(key);
     }
@@ -353,7 +351,7 @@ function findDuplicates(arr) {
 
 ### JavaScript/TypeScript
 
-1. **Avoid `delete` operator**: Use `Map` or set to `undefined` instead
+1. **Avoid `delete` operator on objects**: Use `Map` for dynamic properties instead. If you must use objects, consider recreating the object without the property rather than using `delete`, as `delete` can deoptimize the object's hidden class in JavaScript engines
 2. **Use `const` and `let`**: Avoid `var` for better optimization
 3. **Prefer `for...of` over `forEach`**: Slightly faster for large arrays
 4. **Use `requestAnimationFrame` for animations**: Better than `setTimeout`
