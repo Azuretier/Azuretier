@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安定した幸せ - A Personal Journey</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=EB+Garamond:ital,wght@0,400;1,400&family=Zen+Kaku+Gothic+New:wght@300;400;700&display=swap');
+        
+        :root {
+            --bg-primary: #FAF7F0;
+            --bg-secondary: #E8DCC7;
+            --text-primary: #3A3A3A;
+            --text-secondary: #6B6B6B;
+            --accent-warm: #D4A574;
+            --accent-soft: #B8A398;
+            --accent-deep: #8B7355;
+            --shadow-soft: rgba(139, 115, 85, 0.08);
+            --shadow-medium: rgba(139, 115, 85, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent-warm);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+            mix-blend-mode: difference;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            background: var(--accent-warm);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.1;
+            transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .cursor.hover {
+            transform: scale(1.5);
+            border-color: var(--accent-deep);
+        }
+
+        /* Floating Particles */
+        .particle-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent-soft);
+            border-radius: 50%;
+            opacity: 0;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) translateX(0) scale(0);
+            }
+            10% {
+                opacity: 0.4;
+                transform: translateY(90vh) translateX(10px) scale(1);
+            }
+            90% {
+                opacity: 0.4;
+                transform: translateY(-10vh) translateX(-10px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-20vh) translateX(0) scale(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 2rem;
+            background: radial-gradient(ellipse at 50% 50%, var(--bg-primary), var(--bg-secondary));
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-title {
+            font-family: 'Shippori Mincho', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            margin-bottom: 2rem;
+            letter-spacing: 0.02em;
+            position: relative;
+            display: inline-block;
+        }
+
+        .main-title::before {
+            content: '安定した幸せ';
+            position: absolute;
+            top: -0.5rem;
+            left: -0.5rem;
+            opacity: 0.1;
+            font-size: 1.2em;
+            transform: rotate(-2deg);
+            color: var(--accent-warm);
+        }
+
+        .subtitle {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation Dots */
+        .nav-dots {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+
+        .dot {
+            display: block;
+            width: 12px;
+            height: 12px;
+            background: var(--bg-secondary);
+            border-radius: 50%;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .dot:hover {
+            transform: scale(1.5);
+            background: var(--accent-warm);
+        }
+
+        .dot.active {
+            background: var(--accent-deep);
+            transform: scale(1.3);
+        }
+
+        .dot::before {
+            content: attr(data-label);
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .dot:hover::before {
+            opacity: 1;
+        }
+
+        /* Sections */
+        .section {
+            min-height: 100vh;
+            padding: 5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .section-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            padding: 2rem;
+        }
+
+        .about-visual {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, var(--accent-soft), var(--accent-warm));
+            border-radius: 200px 20px 200px 20px;
+            overflow: hidden;
+        }
+
+        .about-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 20 Q 80 40 50 60 Q 20 40 50 20' fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='2'/%3E%3C/svg%3E") repeat;
+            opacity: 0.3;
+        }
+
+        .section-title {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .section-text {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Works Section */
+        .works-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .work-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow-soft);
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .work-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-warm), var(--accent-deep));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .work-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px var(--shadow-medium);
+        }
+
+        .work-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .work-preview {
+            height: 200px;
+            background: linear-gradient(135deg, #FFE4E1, #E8F5E9);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .work-info {
+            padding: 2rem;
+        }
+
+        .work-title {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .work-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Philosophy Section */
+        .philosophy-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .philosophy-quote {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 3rem 0;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .philosophy-quote::before,
+        .philosophy-quote::after {
+            font-size: 4rem;
+            color: var(--accent-soft);
+            position: absolute;
+            opacity: 0.3;
+        }
+
+        .philosophy-quote::before {
+            content: '"';
+            top: -1rem;
+            left: -2rem;
+        }
+
+        .philosophy-quote::after {
+            content: '"';
+            bottom: -3rem;
+            right: -2rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, transparent, var(--bg-secondary));
+            border-radius: 40px;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: white;
+            border-radius: 30px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px var(--shadow-soft);
+        }
+
+        .contact-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--shadow-medium);
+            background: var(--accent-warm);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-dots {
+                display: none;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-visual {
+                height: 300px;
+            }
+
+            .philosophy-quote {
+                font-size: 1.8rem;
+            }
+
+            body {
+                cursor: default;
+            }
+
+            .cursor,
+            .cursor-follower {
+                display: none;
+            }
+        }
+
+        /* Interactive Elements */
+        .interactive-element {
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .interactive-element:hover {
+            color: var(--accent-warm);
+        }
+
+        .interactive-element::after {
+            content: attr(data-hover);
+            position: absolute;
+            top: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .interactive-element:hover::after {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Floating Particles -->
+    <div class="particle-container"></div>
+
+    <!-- Navigation Dots -->
+    <nav class="nav-dots">
+        <a href="#home" class="dot active" data-label="ホーム"></a>
+        <a href="#about" class="dot" data-label="私について"></a>
+        <a href="#works" class="dot" data-label="作品"></a>
+        <a href="#philosophy" class="dot" data-label="哲学"></a>
+        <a href="#contact" class="dot" data-label="連絡"></a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="main-title">安定した幸せ</h1>
+            <p class="subtitle">A Journey of Stable Happiness</p>
+            <p class="section-text">
+                <span class="interactive-element" data-hover="創造">創造</span>と
+                <span class="interactive-element" data-hover="調和">調和</span>の間で、
+                <span class="interactive-element" data-hover="自分">自分</span>らしさを表現する
+            </p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="section-content">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2 class="section-title">私について</h2>
+                    <p class="section-text">
+                        音楽とコードの間で踊り、言葉と色彩の中で遊ぶ。
+                        日常の中に小さな魔法を見つけ、それを形にすることが好きです。
+                    </p>
+                    <p class="section-text">
+                        RHYTHMIAのようなインタラクティブな作品から、
+                        人生の物語を紡ぐLife Journeyまで、
+                        技術と感性を融合させた表現を追求しています。
+                    </p>
+                </div>
+                <div class="about-visual"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Works Section -->
+    <section id="works" class="section">
+        <div class="section-content">
+            <h2 class="section-title">作品</h2>
+            <div class="works-container">
+                <div class="work-card">
+                    <div class="work-preview" style="background: linear-gradient(135deg, #FF6B9D, #C44569);"></div>
+                    <div class="work-info">
+                        <h3 class="work-title">RHYTHMIA</h3>
+                        <p class="work-description">音楽とパズルが融合したリズムゲーム。ビートに合わせて世界を彩る。</p>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-preview" style="background: linear-gradient(135deg, #4ECDC4, #1A535C);"></div>
+                    <div class="work-info">
+                        <h3 class="work-title">Life Journey</h3>
+                        <p class="work-description">人生の7つの章を詩的に表現したインタラクティブな物語。</p>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-preview" style="background: linear-gradient(135deg, #A29BFE, #6C5CE7);"></div>
+                    <div class="work-info">
+                        <h3 class="work-title">次の作品</h3>
+                        <p class="work-description">新しい物語が始まる場所。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="section">
+        <div class="section-content">
+            <div class="philosophy-content">
+                <h2 class="section-title">哲学</h2>
+                <p class="section-text">
+                    技術は表現の道具であり、感性は創造の源泉。
+                    二つが出会うところに、新しい可能性が生まれます。
+                </p>
+                <div class="philosophy-quote">
+                    安定した幸せとは、<br>
+                    変化を恐れず、<br>
+                    今この瞬間を大切にすること
+                </div>
+                <p class="section-text">
+                    毎日の小さな発見と、穏やかな成長の中に、
+                    本当の豊かさがあると信じています。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="section-content">
+            <div class="contact-content">
+                <h2 class="section-title">つながる</h2>
+                <p class="section-text">
+                    新しい出会いと創造的な対話を楽しみにしています。
+                </p>
+                <div class="contact-links">
+                    <a href="#" class="contact-link">
+                        <span>✉️</span>
+                        <span>メール</span>
+                    </a>
+                    <a href="#" class="contact-link">
+                        <span>🐦</span>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="#" class="contact-link">
+                        <span>💼</span>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX - 20 + 'px';
+                cursorFollower.style.top = e.clientY - 20 + 'px';
+            }, 100);
+        });
+
+        // Cursor hover effect
+        const hoverElements = document.querySelectorAll('a, button, .interactive-element, .work-card');
+        hoverElements.forEach(elem => {
+            elem.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            elem.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // Floating Particles
+        const particleContainer = document.querySelector('.particle-container');
+        const particleCount = 20;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 20 + 20) + 's';
+            particleContainer.appendChild(particle);
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navigation Dots Active State
+        const sections = document.querySelectorAll('.section, .hero');
+        const navDots = document.querySelectorAll('.dot');
+
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    navDots.forEach(dot => {
+                        if (dot.getAttribute('href') === `#${id}`) {
+                            dot.classList.add('active');
+                        } else {
+                            dot.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
+        // Parallax Effect on Scroll
+        let ticking = false;
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.hero-content, .about-visual');
+            
+            parallaxElements.forEach((elem, index) => {
+                const speed = index === 0 ? 0.5 : 0.3;
+                const yPos = -(scrolled * speed);
+                elem.style.transform = `translateY(${yPos}px)`;
+            });
+            
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+
+        // Interactive Elements Animation
+        const interactiveElements = document.querySelectorAll('.interactive-element');
+        interactiveElements.forEach((elem, index) => {
+            elem.style.animationDelay = `${index * 0.1}s`;
+            elem.addEventListener('click', function() {
+                this.style.animation = 'none';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 10);
+            });
+        });
+    </script>
+</body>
+</html>
